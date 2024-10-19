@@ -80,4 +80,4 @@ To learn more about React Native, take a look at the following resources:
 
 # Something to set up
 
-yarn add @react-navigation/native @react-navigation/native-stack @react-native-async-storage/async-storage react-native-screens @joaosousa/react-native-progress-steps react-native-progress-steps axios @react-navigation/material-top-tabs
+yarn add @react-navigation/native @react-navigation/native-stack @react-native-async-storage/async-storage react-native-screens @joaosousa/react-native-progress-steps react-native-progress-steps axios @react-navigation/material-top-tabs react-native-tab-view

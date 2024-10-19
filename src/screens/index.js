@@ -8,6 +8,7 @@ import ResetPassword from "./Auth/ResetPassword";
 //UserProfile
 import UserProfile from "./UserProfile/UserProfile";
 import ResetPasswordInProfile from "./UserProfile/ResetPasswordInProfile";
+import SettingProfile from "./UserProfile/SettingProfile";
 
 
 export {
@@ -19,4 +20,5 @@ export {
   //
   UserProfile,
   ResetPasswordInProfile,
+  SettingProfile,
 };

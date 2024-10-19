@@ -191,21 +191,19 @@ export default function UserProfile(props) {
 
         <RowSectionDisplay icon={icons.phoneIcon} text={phoneNumber} />
         <RowSectionDisplay icon={icons.emailIcon} text={email} />
-        {/* <RowSectionDisplay icon={icons.birthdayCakeIcon} text={yearOfBirth} /> */}
-        {/* <RowSectionDisplay icon={icons.genderEqualityIcon} text={gender} /> */}
 
-        {/* <RowSectionTitle text={"Tùy chỉnh tài khoản"} /> */}
+        <RowSectionTitle text={"Tùy chỉnh tài khoản"} />
 
-        {/* <RowSectionNavigate
+        <RowSectionNavigate
           icon={icons.personIcon}
           text={"Đổi thông tin cá nhân"}
           onPress={() => navigate("SettingProfile")}
-        /> */}
+        />
 
         <RowSectionNavigate
           icon={icons.keyIcon}
           text={"Đổi mật khẩu"}
-          onPress={() => navigate("ResetPassword")}
+          onPress={() => navigate("ResetPasswordInProfile")}
         />
         <RowSectionNavigate
           icon={icons.exportIcon}

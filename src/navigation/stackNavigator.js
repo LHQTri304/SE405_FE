@@ -8,6 +8,7 @@ import {
   Verification,
   ResetPassword,
   UserProfile,
+  ResetPasswordInProfile,
 } from '../screens';
 //import MainBottomTab from './MainBottomTab';
 
@@ -17,7 +18,7 @@ export default function StackNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="ResetPasswordInProfile"
         screenOptions={{
           headerShown: false,
         }}>
@@ -28,6 +29,7 @@ export default function StackNavigator() {
         <Stack.Screen name="ResetPassword" component={ResetPassword} />
 
         <Stack.Screen name="UserProfile" component={UserProfile} />
+        <Stack.Screen name="ResetPasswordInProfile" component={ResetPasswordInProfile} />
       </Stack.Navigator>
     </NavigationContainer>
   );

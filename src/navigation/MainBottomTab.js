@@ -1,3 +1,84 @@
+/* import * as React from "react";
+import { View, Alert } from "react-native";
+import {
+  UserProfile,
+  GroupChat,
+  Friends,
+  AllNotification,
+  ChatbotScreen,
+} from "../screens";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { images, icons, colors, fontSizes } from "../constants";
+import { Icon } from "../components";
+
+const Tab = createBottomTabNavigator();
+
+const ScreenOptions = ({ route }) => ({
+  headerShown: false,
+  tabBarActiveTintColor: colors.active,
+  tabBarInactiveTintColor: colors.inactive,
+  tabBarActiveBackgroundColor: colors.backgroundWhite,
+  tabBarInactiveBackgroundColor: colors.backgroundWhite,
+
+  tabBarIcon: ({ focused, color, size }) => {
+    let screenName = route.name;
+    let iconName = icons.personIcon;
+    if (screenName == "GroupChat") {
+      iconName = icons.groupIcon;
+    } else if (screenName == "Friends") {
+      iconName = icons.activeChatMessageIcon;
+    } else if (screenName == "Notifications") {
+      iconName = icons.activeBellAlarm;
+    } else if (screenName == "MessageBot") {
+      iconName = icons.activeFAQIcon;
+    }
+
+    return (
+      <Icon
+        name={iconName}
+        size={focused ? 30 : 20}
+        color={color}
+        style={{ marginTop: "10%" }}
+      />
+    );
+  },
+});
+
+const tabBarLabelStyles = {
+  fontSize: fontSizes.h7,
+  marginTop: "5%",
+  marginBottom: "5%",
+};
+
+export default function MainBottomTab(props) {
+  //const { tabName } = props.route.params;
+
+  return (
+    <Tab.Navigator
+      //initialRouteName={tabName == null ? "UserProfile" : tabName}
+      screenOptions={ScreenOptions}
+    >
+      <Tab.Screen
+        name="UserProfile"
+        component={UserProfile}
+        options={{
+          //tabBarLabel: "Bạn bè",
+          tabBarLabelStyle: tabBarLabelStyles,
+        }}
+      />
+      <Tab.Screen
+        name="UserProfile2"
+        component={UserProfile}
+        options={{
+          //tabBarLabel: "Bạn bè",
+          tabBarLabelStyle: tabBarLabelStyles,
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+ */
+
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React, {useEffect, useRef} from 'react';
 import {
@@ -10,32 +91,32 @@ import {
 import {images, icons, colors, fontSizes} from '../constants';
 import {Icon} from '../components';
 import * as Animatable from 'react-native-animatable';
-import {UserProfile} from '../screens';
+import {UserProfile, Friends, GroupChat} from '../screens';
 
 const TabArr = [
   {
     route: 'Groups',
     label: 'Groups',
     icon: icons.groupIcon,
-    component: UserProfile,
-    color: 'lime',
-    alphaClr: null,
+    component: GroupChat,
+    color: colors.PrimaryBackground,
+    alphaClr: colors.SecondaryBackground,
   },
   {
     route: 'Chat',
     label: 'Chat',
     icon: icons.activeChatMessageIcon,
-    component: UserProfile,
-    color: 'gold',
-    alphaClr: null,
+    component: Friends,
+    color: colors.PrimaryBackground,
+    alphaClr: colors.SecondaryBackground,
   },
   {
     route: 'Account',
     label: 'Account',
     icon: icons.personIcon,
     component: UserProfile,
-    color: 'purple',
-    alphaClr: null,
+    color: colors.PrimaryBackground,
+    alphaClr: colors.SecondaryBackground,
   },
 ];
 
@@ -49,8 +130,8 @@ const TabButton = props => {
 
   useEffect(() => {
     if (focused) {
-      viewRef.current.animate({0: {scale: 0}, 1: {scale: 1}});
-      textViewRef.current.animate({0: {scale: 0}, 1: {scale: 1}});
+      viewRef.current.animate({0: {scale: 0}, 1: {scale: 1.1}});
+      textViewRef.current.animate({0: {scale: 0}, 1: {scale: 1.2}});
     } else {
       viewRef.current.animate({0: {scale: 1}, 1: {scale: 0}});
       textViewRef.current.animate({0: {scale: 1}, 1: {scale: 0}});
@@ -61,7 +142,7 @@ const TabButton = props => {
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={1}
-      style={[styles.container, {flex: focused ? 1 : 0.65}]}>
+      style={[styles.tabButtonContainer, {flex: focused ? 1 : 0.65}]}>
       <View>
         <Animatable.View
           ref={viewRef}
@@ -78,7 +159,9 @@ const TabButton = props => {
           <Icon
             name={item.icon}
             size={20}
-            color={focused ? colors.SecondaryBackground : colors.PrimaryBackground}
+            color={
+              focused ? colors.SecondaryBackground : colors.PrimaryBackground
+            }
           />
           <Animatable.View ref={textViewRef}>
             {focused && (
@@ -97,7 +180,7 @@ const TabButton = props => {
   );
 };
 
-export default function AnimTab3() {
+export default function MainBottomTab() {
   return (
     <SafeAreaView style={{flex: 1}}>
       <Tab.Navigator
@@ -129,7 +212,7 @@ export default function AnimTab3() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  tabButtonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     height: '99%',
